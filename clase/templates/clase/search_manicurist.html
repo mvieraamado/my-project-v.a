@@ -1,15 +1,25 @@
 {% extends 'index/index.html' %}
 
-{% block search_manicurist %}
-    <form>
+{% block block_body %}
+    <form action={% url 'search_manicurist' %} method="get">
         {% csrf_token %}
-        <label>Name:</label>
-        <input type="text">
-        <label>Last Name:</label>
-        <input type="text">
-        <label>Email:</label>
-        <input type="text">
-
-        <input type="submit" placeholder="Submit">
+        <table>
+            {{my_form.as_table}}
+        </table>
+        <input type="submit" value="Search">
     </form>
-{% endblock search_manicurist %}
+
+    {% if dato %}
+        <div class="row">
+            {% for manicurist in search_for_manicurists %}
+                <div class="col-sm-auto">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ manicurist.name }} {{manicurist.lasName}}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock block_body %}

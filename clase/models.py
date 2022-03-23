@@ -13,7 +13,7 @@ class Client_n(models.Model):
     email = models.EmailField()
     job = models.CharField(max_length=40)
     def __str__(self):
-        return f"Name: {self.name} Last name: {self.lastName} Job: {self.job}"
+        return f"Name: {self.name} Last name: {self.lastName} Work to be performed: {self.job}"
 
 class Turn(models.Model):
     date = models.DateTimeField()

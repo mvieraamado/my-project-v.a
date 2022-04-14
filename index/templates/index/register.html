@@ -1,0 +1,9 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form_register.as_p}}
+        <input type="submit" value="Register"/>
+    </form>
+{% endblock block_body %}

@@ -1,0 +1,19 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="container-fluid vh-100 p-5 bg-light">
+        {% load static %}
+        <div class="row">
+            <div class="col-4 pt-5 d-flex justify-content-end">
+                <img src={% static 'assets/img/mar2.png' %} alt="user" height='100' class="rounded-pill">
+                
+            </div>
+            <div class="col-6 p-4">
+                <h1 class="pt-4 pb-2">Mariam Viera</h1>
+                <p>I am your host, Mariam Viera, responsible for almost everything on this site. 
+                    This is Mariam on Software , where I have been talking about software development among other things, since 2022.
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock block_body %}

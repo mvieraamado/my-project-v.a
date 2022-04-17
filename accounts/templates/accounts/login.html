@@ -1,0 +1,15 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="container-fluid sectionAccount">
+        <h3 class="pb-4">Login to your account</h3>
+        {% if mensaje %}
+        {{mensaje}}
+        {% endif %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form_login.as_p}}
+            <input type="submit" value="Log In" class="btn btn-secondary"/>
+        </form>
+    </section>
+{% endblock block_body %}

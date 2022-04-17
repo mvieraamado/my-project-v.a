@@ -1,0 +1,12 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="sectionAccount p-5">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form_edit.as_p}}
+            <input type="submit" value="Editar"/>
+        </form>
+    </section>
+    
+{% endblock block_body %}

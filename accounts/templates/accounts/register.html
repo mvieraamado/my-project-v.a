@@ -1,0 +1,11 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="container-fluid sectionAccount">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form_register.as_p}}
+            <input type="submit" value="Sign up" class="btn btn-secondary"/>
+        </form>
+    </section>
+{% endblock block_body %}

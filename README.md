@@ -6,8 +6,7 @@ Create a website similar to a blog
 
 ## Content 
 This project has two branches:
-the main branch and the development branch, the latter containing the tests in the repositories.
-### For the moment I recommend cloning the development branch. 
+the main branch and the development branch, the latter containing the tests in the repositories. 
 
 ## Technologies used
 - Python

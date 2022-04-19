@@ -18,6 +18,7 @@ the main branch and the development branch, the latter containing the tests in t
 - Git
 
 ## Demo
+![gif](/index/static/assets/img/blog.gif)
 
 ## How to clone
 1- To clone the repository using HTTPS, under "Clone with HTTPS", click copy. To clone the repository using an SSH key, including a certificate issued by your organisation's SSH certificate authority, click Use SSH and then click copy. To clone a repository using the GitHub CLI, click Use GitHub CLI and then click copy. 

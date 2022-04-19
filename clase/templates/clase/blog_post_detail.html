@@ -1,0 +1,13 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="container-fluid d-flex justify-content-center flex-column p-5 bg-light">
+        <p class="p-4">
+            <a href={% url 'blog_posts' %}>Back</a>
+        </p>
+        <span>Title: {{object.title}}</span>
+        <span>Image: {{object.image}}</span>
+        <p>Content: {{object.content | safe }}</p>
+        <span>Publication date: {{object.publication_date | date:'d-m-Y H:m'}}</span>
+    </section>
+{% endblock block_body %}

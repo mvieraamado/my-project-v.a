@@ -1,0 +1,32 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="sectionAccount">
+        <span>
+            <a href={% url 'create_a_blog_post' %}>Create a blog post</a>
+        </span>
+
+        <form action="" method="get" class="d-flex justify-content-center align-items-center">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Search" class="btn btn-secondary mb-3"></input>
+        </form>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% comment %} {% for blog_post in objects_list %} <<<--- When working with CBV the default is to use objects_list {% endcomment %}
+            {% for blog_post in list_blog_posts %}
+                <div class="col">
+                    <div class="card">
+                        {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{blog_post.title}}</h5>
+                            <p>{{blog_post.subtitle}}</p>
+                            <a href={% url 'edit_blog_post' blog_post.id %}>Edit</a>
+                            <a href={% url 'delete_blog_post' blog_post.id %}>Delete</a>
+                            <a href={% url 'blog_post_detail' blog_post.id %}>See more</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock block_body %}

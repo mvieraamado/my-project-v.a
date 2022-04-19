@@ -1,0 +1,16 @@
+{% extends 'index/index.html' %}
+
+{% block block_body %}
+    <section class="container-fluid p-5 bg-light">
+        <p class="p-4">
+            <a href={% url 'blog_posts' %}>Back</a>
+        </p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <button class="btn btn-secondary">Update</button>
+        </form>
+    </section>
+{% endblock block_body %}

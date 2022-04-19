@@ -7,7 +7,7 @@ from .models import UserExtension
 
 
 def my_login(request):
-    msj = ''
+    
     if request.method == 'POST':
         form_login = AuthenticationForm(request, data=request.POST)
         
@@ -20,13 +20,13 @@ def my_login(request):
                 login(request, user)
                 return render(request, 'index/home.html', {})
             else:
-                return render(request, 'accounts/login.html', {'form_login': form_login, 'msj': 'El usuario no se pudo autenticar.'})
+                return render(request, 'accounts/login.html', {'form_login': form_login})
         else:
-            return render(request, 'accounts/login.html', {'form_login': form_login, 'msj': 'El formulario no es valido.'})
+            return render(request, 'accounts/login.html', {'form_login': form_login})
     
     
     form_login = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form_login': form_login, 'msj': msj})
+    return render(request, 'accounts/login.html', {'form_login': form_login})
 
 def register(request):
     
@@ -36,9 +36,9 @@ def register(request):
         if form_register.is_valid():
             username = form_register.cleaned_data['username']
             form_register.save()
-            return render(request, 'index/home.html', {'msj': f'Se crea correctamente al usuario'})
+            return render(request, 'index/home.html', {})
         else:
-            return render(request, 'accounts/register.html', {'form_register': form_register, 'msj': 'El formulario no es valido.'})
+            return render(request, 'accounts/register.html', {'form_register': form_register})
             
     
     form_register = CreateAUser()
@@ -68,9 +68,9 @@ def edit_user(request):
             request.user.save()
             user_extension_logued.save()
             
-            return redirect('index')
+            return render(request, 'index/home.html', {'search_avatar':search_avatar(request.user)})
         else:
-            return render(request, 'accounts/edit_user.html', {'form_edit': form_edit, 'msj': 'El formulario no es valido.'})
+            return render(request, 'accounts/edit_user.html', {'form_edit': form_edit, 'search_avatar':search_avatar(request.user)})
             
     
     form_edit = EditFullUser(
@@ -85,4 +85,10 @@ def edit_user(request):
             'more_description': user_extension_logued.more_description
         }
     )
-    return render(request, 'accounts/edit_user.html', {'form_edit': form_edit})
+    return render(request, 'accounts/edit_user.html', {'form_edit': form_edit, 'search_avatar':search_avatar(request.user)})
+
+
+def search_avatar (user):
+    return UserExtension.objects.filter(user=user)[0].avatar.url
+    
+    

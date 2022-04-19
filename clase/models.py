@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from django.utils import timezone
 
 class Manicurist(models.Model):
     name = models.CharField(max_length=20)
@@ -19,3 +21,11 @@ class Turn(models.Model):
     date = models.DateTimeField()
     def __str__(self):
         return f"Turn: {self.date}"
+
+class BlogPosts (models.Model):
+    title = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=140)
+    content = RichTextField(blank=True, null=True)
+    image = models.ImageField(upload_to='image', blank=True, null=True)
+    publication_date = models.DateTimeField(default=timezone.now)
+    
